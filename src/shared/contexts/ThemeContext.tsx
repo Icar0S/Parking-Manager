@@ -42,4 +42,4 @@ export const AppThemeProvider: React.FC<AppThemeProviderProps> = ({ children }) 
     </ThemeContext.Provider>
 
   );
-}
+};
