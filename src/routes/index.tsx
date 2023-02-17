@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { Dash } from '../pages';
 import { useAppThemeContext, useAppDrawerContext } from '../shared/contexts';
 
 export const AppRoutes = () => {
@@ -20,11 +21,8 @@ export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/home" element={
-        <>
-          <Button variant='contained' color='primary' onClick={toggleTheme}>Change Theme</Button>
-          <Button variant='contained' color='primary' onClick={toggleDrawerOpen}>Sidebar</Button>
-        </>
-
+        <Dash />
+        //<><Button variant='contained' color='primary' onClick={toggleTheme}>Change Theme</Button> <Button variant='contained' color='primary' onClick={toggleDrawerOpen}>Sidebar</Button>  </>
       } />
 
       <Route path="*" element={<Navigate to="/home" />} />
