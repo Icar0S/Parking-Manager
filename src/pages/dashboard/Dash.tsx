@@ -1,4 +1,4 @@
-import { FerramentasDeListagem } from '../../shared/components';
+import { FerramentasDeDetalhe, FerramentasDeListagem } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 
 export const Dash = () => {
@@ -7,10 +7,10 @@ export const Dash = () => {
     <LayoutBasePage
       titulo='HOME'
       barraFerramentas={
-        <FerramentasDeListagem mostrarInputBusca
-          textoBotaoNovo='Nova' />
+        <FerramentasDeDetalhe />
       }>
-
     </LayoutBasePage>
+
+
   );
 };
