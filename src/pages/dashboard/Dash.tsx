@@ -7,7 +7,7 @@ export const Dash = () => {
     <LayoutBasePage
       titulo='HOME'
       barraFerramentas={
-        <FerramentasDeDetalhe />
+        <FerramentasDeDetalhe mostrarBotaoSalvarEFechar />
       }>
     </LayoutBasePage>
 

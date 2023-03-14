@@ -1,5 +1,7 @@
-import { Box, Button, Divider, Icon, Paper, useTheme } from '@mui/material';
+import { Box, Button, Divider, Icon, Paper, Typography, useTheme } from '@mui/material';
 import Skeleton from '@mui/material/Skeleton';
+import { Theme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 interface IFerramentasDeDetalheProps {
   textoBotaoNovo?: string;
@@ -44,6 +46,9 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
   onCliqueSalvarEFechar,
 
 }) => {
+
+  const smDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('sm'));
+  const mdDown = useMediaQuery((theme: Theme) => theme.breakpoints.down('md'));
   const theme = useTheme();
 
   return (
@@ -64,20 +69,29 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           variant='contained'
           onClick={onCliqueSalvar}
           startIcon={<Icon>save</Icon>}
-        >Salvar</Button>
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            Salvar
+          </Typography>
+        </Button>
       )}
       {mostrarBotaoSalvarCarregando && (<Skeleton width={110} height={60} />)}
 
-      {(mostrarBotaoSalvarEFechar && !mostrarBotaoSalvarEFecharCarregando) && (
+      {(mostrarBotaoSalvarEFechar && !mostrarBotaoSalvarEFecharCarregando && !smDown && !mdDown) && (
         <Button
           color='primary'
           disableElevation
           variant='outlined'
           onClick={onCliqueSalvarEFechar}
           startIcon={<Icon>save</Icon>}
-        >Salvar e Voltar</Button>
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            Salvar e Voltar
+          </Typography>
+
+        </Button>
       )}
-      {mostrarBotaoSalvarEFecharCarregando && (<Skeleton width={180} height={60} />)}
+      {(mostrarBotaoSalvarEFecharCarregando && !smDown && !mdDown) && (<Skeleton width={180} height={60} />)}
 
       {(mostrarBotaoApagar && !mostrarBotaoApagarCarregando) && (
         <Button
@@ -86,23 +100,33 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           variant='outlined'
           onClick={onCliqueApagar}
           startIcon={<Icon>delete</Icon>}
-        >Apagar</Button>
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            Apagar
+          </Typography>
+        </Button>
       )}
       {mostrarBotaoApagarCarregando && (<Skeleton width={110} height={60} />)}
 
-      {(mostrarBotaoNovo && !mostrarBotaoNovoCarregando) && (
+      {(mostrarBotaoNovo && !mostrarBotaoNovoCarregando && !mdDown) && (
         <Button
           color='primary'
           disableElevation
           variant='outlined'
           onClick={onCliqueNovo}
           startIcon={<Icon>add</Icon>}
-        >{textoBotaoNovo}</Button>
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            {textoBotaoNovo}
+          </Typography>
+        </Button>
       )}
-      {mostrarBotaoNovoCarregando && (<Skeleton width={110} height={60} />)}
+      {(mostrarBotaoNovoCarregando && !mdDown) && (<Skeleton width={110} height={60} />)}
 
-
-      <Divider variant='middle' orientation='vertical' />
+      {mostrarBotaoVoltar &&
+        (mostrarBotaoNovo || mostrarBotaoApagar || mostrarBotaoSalvar || mostrarBotaoSalvarEFechar)
+        && (<Divider variant='middle' orientation='vertical' />
+        )}
 
       {(mostrarBotaoVoltar && !mostrarBotaoVoltarCarregando) && (
         <Button
@@ -111,7 +135,11 @@ export const FerramentasDeDetalhe: React.FC<IFerramentasDeDetalheProps> = ({
           variant='outlined'
           onClick={onCliqueVoltar}
           startIcon={<Icon>arrow_back</Icon>}
-        >Voltar</Button>
+        >
+          <Typography variant='button' whiteSpace='nowrap' textOverflow='ellipsis' overflow='hidden'>
+            Voltar
+          </Typography>
+        </Button>
       )}
       {mostrarBotaoVoltarCarregando && (<Skeleton width={110} height={60} />)}
 
