@@ -1,7 +1,13 @@
 import { Button } from '@mui/material';
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
-import { Dash } from '../pages';
+import {
+  Dash,
+  ListagemParking,
+  ListagemCities,
+  ListagemHistory,
+  ListagePayments
+} from '../pages';
 import { useAppThemeContext, useAppDrawerContext } from '../shared/contexts';
 
 export const AppRoutes = () => {
@@ -11,19 +17,42 @@ export const AppRoutes = () => {
   useEffect(() => {
     setDrawerOptions([
       {
-        label: 'Página inicial',
+        label: 'Home page',
         path: '/home',
         icon: 'home',
+      },
+      {
+        label: 'Parking',
+        path: '/parking',
+        icon: 'local_parking',
+      },
+      {
+        label: 'Cities',
+        path: '/cities',
+        icon: 'location_city',
+      },
+      {
+        label: 'History',
+        path: '/history',
+        icon: 'history',
+      },
+      {
+        label: 'Payments',
+        path: '/payments',
+        icon: 'payments',
       },
     ]);
   }, []);
 
   return (
     <Routes>
-      <Route path="/home" element={
-        <Dash />
-        //<><Button variant='contained' color='primary' onClick={toggleTheme}>Change Theme</Button> <Button variant='contained' color='primary' onClick={toggleDrawerOpen}>Sidebar</Button>  </>
-      } />
+      <Route path="/home" element={<Dash />} />
+
+      <Route path="/parking" element={<ListagemParking />} />
+      {/* <Route path="/parking/detalhes/:id" element={<Dash />} /> */}
+      <Route path="/cities" element={<ListagemCities />} />
+      <Route path="/history" element={<ListagemHistory />} />
+      <Route path="/payments" element={<ListagePayments />} />
 
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
