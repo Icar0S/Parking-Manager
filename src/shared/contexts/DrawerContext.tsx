@@ -20,7 +20,7 @@ const DrawerContext = createContext({} as IDrawerContextData);
 
 export const useAppDrawerContext = () => {
   return useContext(DrawerContext);
-}
+};
 
 
 export const DrawerProvider: React.FC<AppDrawerProviderProps> = ({ children }) => {
@@ -28,12 +28,11 @@ export const DrawerProvider: React.FC<AppDrawerProviderProps> = ({ children }) =
   const [drawerOptions, setDrawerOptions] = useState<IDrawerOption[]>([]);
 
   const toggleDrawerOpen = useCallback(() => {
-    setIsDrawerOpen(oldisDrawerOpen => !oldisDrawerOpen)
+    setIsDrawerOpen(oldisDrawerOpen => !oldisDrawerOpen);
   }, []);
 
-
   const handleSetDrawerOptions = useCallback((newDrawerOptions: IDrawerOption[]) => {
-    setDrawerOptions(newDrawerOptions)
+    setDrawerOptions(newDrawerOptions);
   }, []);
 
 

@@ -1,11 +1,11 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { FerramentasDeListagem } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 
 
-export const ListagemCities: React.FC = () => {
+export const ListagemClients: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const busca = useMemo(() => {
@@ -14,13 +14,13 @@ export const ListagemCities: React.FC = () => {
 
 
   //Para realizar consultas na aplicação
-  // useEffect(() => {
+  useEffect(() => {
 
-  // }, []);
+  }, []);
 
   return (
     <LayoutBasePage
-      titulo=" Listagem de Cidades "
+      titulo=" Listagem de Clientes "
       barraFerramentas={
         <FerramentasDeListagem
           mostrarInputBusca
@@ -30,7 +30,6 @@ export const ListagemCities: React.FC = () => {
         />
       }
     >
-
     </LayoutBasePage>
   );
 };

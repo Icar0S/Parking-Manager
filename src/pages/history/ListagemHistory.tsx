@@ -1,5 +1,5 @@
-import { FerramentasDeListagem } from "../../shared/components";
-import { LayoutBasePage } from "../../shared/layouts";
+import { FerramentasDeListagem } from '../../shared/components';
+import { LayoutBasePage } from '../../shared/layouts';
 
 
 export const ListagemHistory: React.FC = () => {

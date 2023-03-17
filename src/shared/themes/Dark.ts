@@ -1,4 +1,4 @@
-import { createTheme } from "@mui/material";
+import { createTheme } from '@mui/material';
 import { blue, purple } from '@mui/material/colors';
 
 export const DarkTheme = createTheme({

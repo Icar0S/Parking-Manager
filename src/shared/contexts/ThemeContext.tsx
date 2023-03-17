@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState } from 'react';
-import { ThemeProvider } from '@mui/material'
+import { ThemeProvider } from '@mui/material';
 import { Box } from '@mui/system';
 
 import { DarkTheme, LightTheme } from './../themes';
@@ -16,19 +16,19 @@ const ThemeContext = createContext({} as IThemeContextData);
 
 export const useAppThemeContext = () => {
   return useContext(ThemeContext);
-}
+};
 
 export const AppThemeProvider: React.FC<AppThemeProviderProps> = ({ children }) => {
   const [themeName, setThemeName] = useState<'light' | 'dark'>('light');
 
   const toggleTheme = useCallback(() => {
-    setThemeName(oldThemeName => oldThemeName === 'light' ? 'dark' : 'light')
+    setThemeName(oldThemeName => oldThemeName === 'light' ? 'dark' : 'light');
   }, []);
 
   const theme = useMemo(() => {
     if (themeName === 'light') return LightTheme;
 
-    return DarkTheme
+    return DarkTheme;
   }, [themeName]);
 
 

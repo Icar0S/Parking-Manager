@@ -6,7 +6,8 @@ import {
   ListagemParking,
   ListagemCities,
   ListagemHistory,
-  ListagePayments
+  ListagePayments,
+  ListagemClients
 } from '../pages';
 import { useAppThemeContext, useAppDrawerContext } from '../shared/contexts';
 
@@ -41,6 +42,11 @@ export const AppRoutes = () => {
         path: '/payments',
         icon: 'payments',
       },
+      {
+        label: 'Clients',
+        path: '/clients',
+        icon: 'people',
+      },
     ]);
   }, []);
 
@@ -50,6 +56,7 @@ export const AppRoutes = () => {
 
       <Route path="/parking" element={<ListagemParking />} />
       {/* <Route path="/parking/detalhes/:id" element={<Dash />} /> */}
+      <Route path="/clients" element={<ListagemClients />} />
       <Route path="/cities" element={<ListagemCities />} />
       <Route path="/history" element={<ListagemHistory />} />
       <Route path="/payments" element={<ListagePayments />} />
