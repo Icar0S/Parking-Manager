@@ -10,4 +10,4 @@ export const errorInterceptor = (error: AxiosError) => {
     //return Promise.reject(new Error('Erro de conexão.'));
   }
 
-}
+};

@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import { FerramentasDeListagem } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
+import { ClientesService } from '../../shared/services/api/clientes/ClientesService';
 
 
 export const ListagemClients: React.FC = () => {
@@ -15,7 +16,12 @@ export const ListagemClients: React.FC = () => {
 
   //Para realizar consultas na aplicação
   useEffect(() => {
-
+    ClientesService.getAll().then((result) => {
+      if (result instanceof Error) {
+        alert(result.message);
+        return;
+      }
+    });
   }, []);
 
   return (

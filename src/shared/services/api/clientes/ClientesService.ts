@@ -1,9 +1,6 @@
 import { Enviroment } from "../../../environment";
 import { Api } from "../axios-config";
 
-interface ICliente {
-
-}
 
 interface IListagemCliente {
   id: number;
@@ -65,8 +62,8 @@ const create = async (dados: Omit<IDetalheCliente, 'id'>): Promise<number | Erro
   } catch (error) {
     console.error(error);
     return new Error((error as { message: string }).message || 'Erro ao criar o registro.');
-  };
-}
+  }
+};
 
 const updateById = async (id: number, dados: IDetalheCliente): Promise<void | Error> => {
   try {
