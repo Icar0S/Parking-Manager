@@ -1,11 +1,13 @@
 import { useMemo, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Paper, TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
+import { Paper, TableContainer, Table, TableHead, TableBody, TableFooter, TableRow, TableCell } from '@mui/material';
 
 import { FerramentasDeListagem } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 import { ClientesService, IListagemCliente } from '../../shared/services/api/clientes/ClientesService';
 import { useDebounce } from '../../shared/hooks';
+import LinearProgress from '@mui/material/LinearProgress';
+import { Enviroment } from '../../shared/environment';
 
 export const ListagemClients: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -58,6 +60,7 @@ export const ListagemClients: React.FC = () => {
 
       <TableContainer component={Paper} variant="outlined" sx={{ m: 1, width: 'auto' }}>
         <Table>
+
           <TableHead>
             <TableRow>
               <TableCell>Ações</TableCell>
@@ -69,7 +72,6 @@ export const ListagemClients: React.FC = () => {
               <TableCell>Check-out</TableCell>
               <TableCell>Pagamento</TableCell>
             </TableRow>
-
           </TableHead>
 
           <TableBody>
@@ -87,6 +89,22 @@ export const ListagemClients: React.FC = () => {
             ))}
 
           </TableBody>
+
+          {totalCount === 0 && !isLoading && (
+            <caption>{Enviroment.LISTAGEM_VAZIA}</caption>)
+          }
+
+          <TableFooter>
+            {isLoading && (
+              <TableRow>
+                <TableCell colSpan={8}>
+
+                  <LinearProgress variant='indeterminate' />
+
+                </TableCell>
+              </TableRow>
+            )}
+          </TableFooter>
 
         </Table>
       </TableContainer>
