@@ -4,10 +4,11 @@ import { useSearchParams } from 'react-router-dom';
 import { FerramentasDeListagem } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 import { ClientesService } from '../../shared/services/api/clientes/ClientesService';
-
+import { useDebounce } from '../../shared/hooks';
 
 export const ListagemClients: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { debounce } = useDebounce();
 
   const busca = useMemo(() => {
     return searchParams.get('busca') || '';
@@ -16,14 +17,20 @@ export const ListagemClients: React.FC = () => {
 
   //Para realizar consultas na aplicação
   useEffect(() => {
-    ClientesService.getAll(1, busca).then((result) => {
-      if (result instanceof Error) {
-        alert(result.message);
-        return;
-      }
-      else
-        console.log(result);
+
+    debounce(() => {
+
+      ClientesService.getAll(1, busca).then((result) => {
+        if (result instanceof Error) {
+          alert(result.message);
+          return;
+        }
+        else
+          console.log(result);
+      });
+
     });
+
   }, [busca]);
 
   return (
