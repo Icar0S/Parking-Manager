@@ -1,15 +1,15 @@
-import { Enviroment } from "../../../environment";
-import { Api } from "../axios-config";
+import { Enviroment } from '../../../environment';
+import { Api } from '../axios-config';
 
 
-interface IListagemCliente {
+export interface IListagemCliente {
   id: number;
   email: string;
   nome: string;
   veiculo: string,
   placa: string,
-  checkin: Date,
-  checkout: Date,
+  checkin: string, //Date
+  checkout: string,
   payments: number
   // payments: [
   //   {
@@ -26,8 +26,8 @@ interface IDetalheCliente {
   nome: string;
   veiculo: string,
   placa: string,
-  checkin: Date,
-  checkout: Date,
+  checkin: string, //Date
+  checkout: string,
   payments: number
   // payments: [
   //   {
