@@ -6,11 +6,37 @@ interface IListagemCliente {
   id: number;
   email: string;
   nome: string;
+  veiculo: string,
+  placa: string,
+  checkin: Date,
+  checkout: Date,
+  payments: number
+  // payments: [
+  //   {
+  //     paymentsId: number,
+  //     amount: number,
+  //     description: string,
+  //     data: Date
+  //   }
+  // ]
 }
 interface IDetalheCliente {
   id: number;
   email: string;
   nome: string;
+  veiculo: string,
+  placa: string,
+  checkin: Date,
+  checkout: Date,
+  payments: number
+  // payments: [
+  //   {
+  //     paymentsId: number,
+  //     amount: number,
+  //     description: string,
+  //     data: Date
+  //   }
+  // ]
 }
 
 type TClientesComTotalCount = {
@@ -20,7 +46,7 @@ type TClientesComTotalCount = {
 
 const getAll = async (page = 1, filter = ''): Promise<TClientesComTotalCount | Error> => {
   try {
-    const urlRelativa = `/clientes?_page=${page}&_limit=${Enviroment.LIMITE_DE_LINHAS}&nomeCompleto_like=${filter}`;
+    const urlRelativa = `/clients?_page=${page}&_limit=${Enviroment.LIMITE_DE_LINHAS}&nome_like=${filter}`;
     const { data, headers } = await Api.get(urlRelativa);
 
     if (data) {
@@ -39,7 +65,7 @@ const getAll = async (page = 1, filter = ''): Promise<TClientesComTotalCount | E
 
 const getById = async (id: number): Promise<IDetalheCliente | Error> => {
   try {
-    const { data } = await Api.get(`/clientes/${id}`);
+    const { data } = await Api.get(`/clients/${id}`);
 
     if (data) {
       return data;
@@ -53,7 +79,7 @@ const getById = async (id: number): Promise<IDetalheCliente | Error> => {
 
 const create = async (dados: Omit<IDetalheCliente, 'id'>): Promise<number | Error> => {
   try {
-    const { data } = await Api.post<IDetalheCliente>('/clientes', dados);
+    const { data } = await Api.post<IDetalheCliente>('/clients', dados);
 
     if (data) {
       return data.id;
@@ -67,7 +93,7 @@ const create = async (dados: Omit<IDetalheCliente, 'id'>): Promise<number | Erro
 
 const updateById = async (id: number, dados: IDetalheCliente): Promise<void | Error> => {
   try {
-    await Api.put(`/clientes/${id}`, dados);
+    await Api.put(`/clients/${id}`, dados);
   } catch (error) {
     console.error(error);
     return new Error((error as { message: string }).message || 'Erro ao apagar o registro.');

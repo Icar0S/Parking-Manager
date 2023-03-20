@@ -1,4 +1,4 @@
-import { Button } from '@mui/material';
+//import { Button } from '@mui/material';
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import {
@@ -12,7 +12,7 @@ import {
 import { useAppThemeContext, useAppDrawerContext } from '../shared/contexts';
 
 export const AppRoutes = () => {
-  const { toggleTheme } = useAppThemeContext();
+  //const { toggleTheme } = useAppThemeContext();
   const { toggleDrawerOpen, setDrawerOptions } = useAppDrawerContext();
 
   useEffect(() => {
@@ -63,5 +63,5 @@ export const AppRoutes = () => {
 
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>
-  )
+  );
 };

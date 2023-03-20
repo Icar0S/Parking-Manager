@@ -16,13 +16,15 @@ export const ListagemClients: React.FC = () => {
 
   //Para realizar consultas na aplicação
   useEffect(() => {
-    ClientesService.getAll().then((result) => {
+    ClientesService.getAll(1, busca).then((result) => {
       if (result instanceof Error) {
         alert(result.message);
         return;
       }
+      else
+        console.log(result);
     });
-  }, []);
+  }, [busca]);
 
   return (
     <LayoutBasePage
