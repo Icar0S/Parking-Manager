@@ -1,10 +1,11 @@
 import { useMemo, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import {
   Paper, Pagination,
   TableContainer,
   Table, TableHead, TableBody, TableFooter,
   TableRow, TableCell,
+  IconButton, Icon
 } from '@mui/material';
 
 import { FerramentasDeListagem } from '../../shared/components';
@@ -15,9 +16,11 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { Enviroment } from '../../shared/environment';
 
 
+
 export const ListagemClients: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { debounce } = useDebounce();
+  const navigate = useNavigate();
 
   const [rows, setRows] = useState<IListagemCliente[]>([]);
   const [totalCount, setTotalCount] = useState(0);
@@ -54,6 +57,22 @@ export const ListagemClients: React.FC = () => {
 
   }, [busca, pagina]);
 
+  const handleDelete = (id: number) => {
+    if (confirm('Realmente deseja Excluir?')) {
+      ClientesService.deleteById(id)
+        .then(result => {
+          if (result instanceof Error) {
+            alert(result.message);
+          } else {
+            setRows(oldRows => [
+              ...oldRows.filter(oldRow => oldRow.id !== id)
+            ]);
+            alert('Registro Excluído com sucesso!');
+          }
+        });
+    }
+  };
+
   return (
     <LayoutBasePage
       titulo=" Listagem de Clientes "
@@ -86,7 +105,14 @@ export const ListagemClients: React.FC = () => {
           <TableBody>
             {rows.map(row => (
               <TableRow key={row.id}>
-                <TableCell>Ações</TableCell>
+                <TableCell size='small'>
+                  <IconButton onClick={() => handleDelete(row.id)}>
+                    <Icon>delete</Icon>
+                  </IconButton>
+                  <IconButton size='small' onClick={() => navigate(`/clients/detail/${row.id}`)}>
+                    <Icon>edit</Icon>
+                  </IconButton>
+                </TableCell>
                 <TableCell>{row.nome}</TableCell>
                 <TableCell>{row.email}</TableCell>
                 <TableCell>{row.veiculo}</TableCell>
