@@ -1,6 +1,11 @@
 import { useMemo, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Paper, TableContainer, Table, TableHead, TableBody, TableFooter, TableRow, TableCell } from '@mui/material';
+import {
+  Paper, Pagination,
+  TableContainer,
+  Table, TableHead, TableBody, TableFooter,
+  TableRow, TableCell,
+} from '@mui/material';
 
 import { FerramentasDeListagem } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
@@ -8,6 +13,7 @@ import { ClientesService, IListagemCliente } from '../../shared/services/api/cli
 import { useDebounce } from '../../shared/hooks';
 import LinearProgress from '@mui/material/LinearProgress';
 import { Enviroment } from '../../shared/environment';
+
 
 export const ListagemClients: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -21,6 +27,9 @@ export const ListagemClients: React.FC = () => {
     return searchParams.get('busca') || '';
   }, [searchParams]);
 
+  const pagina = useMemo(() => {
+    return Number(searchParams.get('pagina') || '1');
+  }, [searchParams]);
 
   //Para realizar consultas na aplicação
   useEffect(() => {
@@ -28,7 +37,7 @@ export const ListagemClients: React.FC = () => {
     setIsLoading(true);
     debounce(() => {
 
-      ClientesService.getAll(1, busca).then((result) => {
+      ClientesService.getAll(pagina, busca).then((result) => {
         setIsLoading(false);
         if (result instanceof Error) {
           alert(result.message);
@@ -43,7 +52,7 @@ export const ListagemClients: React.FC = () => {
 
     });
 
-  }, [busca]);
+  }, [busca, pagina]);
 
   return (
     <LayoutBasePage
@@ -53,7 +62,7 @@ export const ListagemClients: React.FC = () => {
           mostrarInputBusca
           textoBotaoNovo="Nova"
           textoDaBusca={busca}
-          aoMudarTextoDeBusca={texto => setSearchParams({ busca: texto }, { replace: true })}
+          aoMudarTextoDeBusca={texto => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
         />
       }
     >
@@ -98,9 +107,19 @@ export const ListagemClients: React.FC = () => {
             {isLoading && (
               <TableRow>
                 <TableCell colSpan={8}>
-
                   <LinearProgress variant='indeterminate' />
+                </TableCell>
+              </TableRow>
+            )}
 
+            {(totalCount > 0 && totalCount > Enviroment.LIMITE_DE_LINHAS) && (
+              <TableRow>
+                <TableCell colSpan={8}>
+                  <Pagination
+                    page={pagina}
+                    count={Math.ceil(totalCount / Enviroment.LIMITE_DE_LINHAS)}
+                    onChange={(_, newPage) => setSearchParams({ busca, pagina: newPage.toString() }, { replace: true })}
+                  />
                 </TableCell>
               </TableRow>
             )}

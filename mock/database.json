@@ -5,7 +5,7 @@
       "email": "luizgabriel@gmail.com",
       "nome": "Luiz Gabriel",
       "veiculo": "Chery Tiggo 8",
-      "placa": "IAM-7359",
+      "placa": "IAM7Q59",
       "checkin": "2023-03-13T05:30:00.000Z",
       "checkout": "2023-03-15T18:30:00.000Z",
       "payments": 100.00
@@ -15,7 +15,7 @@
       "email": "pedro@gmail.com",
       "nome": "Pedro Moura",
       "veiculo": "Toyota Hilux",
-      "placa": "MZW-7965",
+      "placa": "MZW7R65",
       "checkin": "2023-02-10T05:30:00.000Z",
       "checkout": "2023-02-15T18:30:00.000Z",
       "payments": 180.00
@@ -25,7 +25,7 @@
       "email": "felipe@gmail.com",
       "nome": "Felipe Santana",
       "veiculo": "Honda Civic Hatch VTi",
-      "placa": "JUW-6954",
+      "placa": "JUW6A54",
       "checkin": "2022-10-13T05:30:00.000Z",
       "checkout": "2022-10-15T18:30:00.000Z",
       "payments": 300.00
@@ -35,7 +35,7 @@
       "email": "felipemoura@gmail.com",
       "nome": "Felipe Moura",
       "veiculo": "Nissan VERSA",
-      "placa": "HPK-0242",
+      "placa": "HPK0T42",
       "checkin": "2023-02-03T05:30:00.000Z",
       "checkout": "2023-02-05T18:30:00.000Z",
       "payments": 200.00
@@ -45,7 +45,7 @@
       "email": "gabriels@gmail.com",
       "nome": "Gabriel Simão",
       "veiculo": "VW Golf GTI",
-      "placa": "HOW-5005",
+      "placa": "HOW5O05",
       "checkin": "2023-03-13T05:30:00.000Z",
       "checkout": "2023-03-15T18:30:00.000Z",
       "payments": 230.00
@@ -65,10 +65,90 @@
       "email": "mateus@gmail.com",
       "nome": "Jose Mateus",
       "veiculo": "VW Polo Sedan",
-      "placa": "QTP5F71",
+      "placa": "ATP5A71",
       "checkin": "2023-01-20T05:30:00.000Z",
       "checkout": "2023-01-29T18:30:00.000Z",
       "payments": 390.00
+    },
+    {
+      "id": 8,
+      "email": "mariana@gmail.com",
+      "nome": "Mariana Oliveira",
+      "veiculo": "Fiat Mobi",
+      "placa": "KBY9P73",
+      "checkin": "2023-01-27T05:30:00.000Z",
+      "checkout": "2023-01-29T18:30:00.000Z",
+      "payments": 190.00
+    },
+    {
+      "id": 9,
+      "email": "laryssa@gmail.com",
+      "nome": "Laryssa Paz",
+      "veiculo": "Honda Civic hybrid",
+      "placa": "BDD0A61",
+      "checkin": "2023-01-23T05:30:00.000Z",
+      "checkout": "2023-01-29T18:30:00.000Z",
+      "payments": 155.00
+    },
+    {
+      "id": 10,
+      "email": "italo@gmail.com",
+      "nome": "Italo Rennan",
+      "veiculo": "BMW X5",
+      "placa": "NEF5A13",
+      "checkin": "2023-01-23T05:30:00.000Z",
+      "checkout": "2023-02-29T18:30:00.000Z",
+      "payments": 955.00
+    },
+    {
+      "id": 11,
+      "email": "joao@gmail.com",
+      "nome": "Joao Henrrique",
+      "veiculo": "Jeep Compass",
+      "placa": "JFG8L39",
+      "checkin": "2023-01-23T05:30:00.000Z",
+      "checkout": "2023-01-29T18:30:00.000Z",
+      "payments": 155.00
+    },
+    {
+      "id": 12,
+      "email": "alice@gmail.com",
+      "nome": "Alice Alves",
+      "veiculo": "Jeep Renagade",
+      "placa": "MVQ3A55",
+      "checkin": "2023-01-23T05:30:00.000Z",
+      "checkout": "2023-01-29T18:30:00.000Z",
+      "payments": 155.00
+    },
+    {
+      "id": 13,
+      "email": "Denise@gmail.com",
+      "nome": "Denise Risia",
+      "veiculo": "Audi A4",
+      "placa": "DAE5A34",
+      "checkin": "2023-01-23T05:30:00.000Z",
+      "checkout": "2023-02-09T18:30:00.000Z",
+      "payments": 755.00
+    },
+    {
+      "id": 14,
+      "email": "Abraao@gmail.com",
+      "nome": "Abraão Lacerda",
+      "veiculo": "Volvo XC90",
+      "placa": "HQD5A44",
+      "checkin": "2023-01-23T05:30:00.000Z",
+      "checkout": "2023-01-29T18:30:00.000Z",
+      "payments": 155.00
+    },
+    {
+      "id": 15,
+      "email": "Yasmin@gmail.com",
+      "nome": "Yasmin Santos",
+      "veiculo": "Jeep Grand Cherokee",
+      "placa": "VNA5G99",
+      "checkin": "2023-01-23T05:30:00.000Z",
+      "checkout": "2023-01-29T18:30:00.000Z",
+      "payments": 155.00
     }
   ]
 }
