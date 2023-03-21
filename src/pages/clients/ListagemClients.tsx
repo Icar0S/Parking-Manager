@@ -81,6 +81,7 @@ export const ListagemClients: React.FC = () => {
           mostrarInputBusca
           textoBotaoNovo="Nova"
           textoDaBusca={busca}
+          aoClicarEmNovo={() => navigate('/clients/detail/new')}
           aoMudarTextoDeBusca={texto => setSearchParams({ busca: texto, pagina: '1' }, { replace: true })}
         />
       }

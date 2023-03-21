@@ -4,3 +4,4 @@ export * from './cities/ListagemCities';
 export * from './history/ListagemHistory';
 export * from './payments/ListagemPayments';
 export * from './clients/ListagemClients';
+export * from './clients/DetailClients';
