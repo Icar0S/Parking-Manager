@@ -105,7 +105,7 @@ export const ListagemClients: React.FC = () => {
           <TableBody>
             {rows.map(row => (
               <TableRow key={row.id}>
-                <TableCell size='small'>
+                <TableCell size='small' width='75px'>
                   <IconButton onClick={() => handleDelete(row.id)}>
                     <Icon>delete</Icon>
                   </IconButton>
