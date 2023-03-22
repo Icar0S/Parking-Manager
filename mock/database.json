@@ -2,23 +2,23 @@
   "clients": [
     {
       "id": 1,
-      "email": "luizgabriel@gmail.com",
       "nome": "Luiz Gabriel",
+      "email": "luizgabriel@gmail.com",
       "veiculo": "Chery Tiggo 8",
       "placa": "IAM7Q59",
-      "checkin": "2023-03-13T05:30:00.000Z",
-      "checkout": "2023-03-15T18:30:00.000Z",
-      "payments": 100.00
+      "checkin": "2023-03-13 05:30",
+      "checkout": "2023-03-15 18:30",
+      "payments": 100
     },
     {
       "id": 2,
-      "email": "pedro@gmail.com",
       "nome": "Pedro Moura",
+      "email": "pedro@gmail.com",
       "veiculo": "Toyota Hilux",
       "placa": "MZW7R65",
-      "checkin": "2023-02-10T05:30:00.000Z",
-      "checkout": "2023-02-15T18:30:00.000Z",
-      "payments": 180.00
+      "checkin": "2023-02-10 05:30",
+      "checkout": "2023-02-15 18:30",
+      "payments": 180
     },
     {
       "id": 3,
@@ -28,7 +28,7 @@
       "placa": "JUW6A54",
       "checkin": "2022-10-13T05:30:00.000Z",
       "checkout": "2022-10-15T18:30:00.000Z",
-      "payments": 300.00
+      "payments": 300
     },
     {
       "id": 4,
@@ -38,7 +38,7 @@
       "placa": "HPK0T42",
       "checkin": "2023-02-03T05:30:00.000Z",
       "checkout": "2023-02-05T18:30:00.000Z",
-      "payments": 200.00
+      "payments": 200
     },
     {
       "id": 5,
@@ -48,7 +48,7 @@
       "placa": "HOW5O05",
       "checkin": "2023-03-13T05:30:00.000Z",
       "checkout": "2023-03-15T18:30:00.000Z",
-      "payments": 230.00
+      "payments": 230
     },
     {
       "id": 6,
@@ -58,7 +58,7 @@
       "placa": "QTP5F71",
       "checkin": "2023-01-10T05:30:00.000Z",
       "checkout": "2023-01-11T18:30:00.000Z",
-      "payments": 90.00
+      "payments": 90
     },
     {
       "id": 7,
@@ -68,7 +68,7 @@
       "placa": "ATP5A71",
       "checkin": "2023-01-20T05:30:00.000Z",
       "checkout": "2023-01-29T18:30:00.000Z",
-      "payments": 390.00
+      "payments": 390
     },
     {
       "id": 8,
@@ -78,7 +78,7 @@
       "placa": "KBY9P73",
       "checkin": "2023-01-27T05:30:00.000Z",
       "checkout": "2023-01-29T18:30:00.000Z",
-      "payments": 190.00
+      "payments": 190
     },
     {
       "id": 9,
@@ -88,7 +88,7 @@
       "placa": "BDD0A61",
       "checkin": "2023-01-23T05:30:00.000Z",
       "checkout": "2023-01-29T18:30:00.000Z",
-      "payments": 155.00
+      "payments": 155
     },
     {
       "id": 10,
@@ -98,7 +98,7 @@
       "placa": "NEF5A13",
       "checkin": "2023-01-23T05:30:00.000Z",
       "checkout": "2023-02-29T18:30:00.000Z",
-      "payments": 955.00
+      "payments": 955
     },
     {
       "id": 11,
@@ -108,7 +108,7 @@
       "placa": "JFG8L39",
       "checkin": "2023-01-23T05:30:00.000Z",
       "checkout": "2023-01-29T18:30:00.000Z",
-      "payments": 155.00
+      "payments": 155
     },
     {
       "id": 12,
@@ -118,7 +118,7 @@
       "placa": "MVQ3A55",
       "checkin": "2023-01-23T05:30:00.000Z",
       "checkout": "2023-01-29T18:30:00.000Z",
-      "payments": 155.00
+      "payments": 155
     },
     {
       "id": 13,
@@ -128,7 +128,7 @@
       "placa": "DAE5A34",
       "checkin": "2023-01-23T05:30:00.000Z",
       "checkout": "2023-02-09T18:30:00.000Z",
-      "payments": 755.00
+      "payments": 755
     },
     {
       "id": 14,
@@ -138,7 +138,7 @@
       "placa": "HQD5A44",
       "checkin": "2023-01-23T05:30:00.000Z",
       "checkout": "2023-01-29T18:30:00.000Z",
-      "payments": 155.00
+      "payments": 155
     },
     {
       "id": 15,
@@ -148,7 +148,17 @@
       "placa": "VNA5G99",
       "checkin": "2023-01-23T05:30:00.000Z",
       "checkout": "2023-01-29T18:30:00.000Z",
-      "payments": 155.00
+      "payments": 155
+    },
+    {
+      "nome": "Bruno Wilson",
+      "email": "bruno@hotmail.com",
+      "veiculo": "Rolls-Royce Phantom",
+      "placa": "HVL9R05",
+      "checkin": "2023-03-20 10:00",
+      "checkout": "2023-03-22 11:00",
+      "payments": "150.40",
+      "id": 16
     }
   ]
 }

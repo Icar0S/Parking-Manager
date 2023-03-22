@@ -29,14 +29,6 @@ interface IDetalheCliente {
   checkin: string, //Date
   checkout: string,
   payments: number
-  // payments: [
-  //   {
-  //     paymentsId: number,
-  //     amount: number,
-  //     description: string,
-  //     data: Date
-  //   }
-  // ]
 }
 
 type TClientesComTotalCount = {
@@ -102,7 +94,7 @@ const updateById = async (id: number, dados: IDetalheCliente): Promise<void | Er
 
 const deleteById = async (id: number): Promise<void | Error> => {
   try {
-    await Api.delete(`/pessoas/${id}`);
+    await Api.delete(`/clients/${id}`);
   } catch (error) {
     console.error(error);
     return new Error((error as { message: string }).message || 'Erro ao apagar o registro.');

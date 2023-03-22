@@ -1,16 +1,32 @@
-import LinearProgress from '@mui/material/LinearProgress';
-import { useEffect, useState } from 'react';
+import { LinearProgress } from '@mui/material';
+import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+//utilizando unform-rocketseat.app
+import { Form } from '@unform/web';
+import { FormHandles } from '@unform/core';
 
 import { FerramentasDeDetalhe } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 import { ClientesService } from '../../shared/services/api/clientes/ClientesService';
+import { VTextField } from '../../shared/forms';
 
+
+interface IFormData {
+  nome: string;
+  email: string;
+  veiculo: string;
+  placa: string;
+  checkin: string;
+  checkout: string;
+  payments: number;
+}
 
 export const DetailClients: React.FC = () => {
 
   const { id = 'new' } = useParams<'id'>(); //useParams recebe tipos de parametro, caso tivesse mais parametros <id | outro>
   const navigate = useNavigate();
+
+  const formRef = useRef<FormHandles>(null);
 
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
@@ -27,14 +43,36 @@ export const DetailClients: React.FC = () => {
             navigate('/clients');
           } else {
             setName(result.nome);
-            console.log(result);
+            formRef.current?.setData(result);
           }
         });
     }
   }, [id]);
 
-  const handleSave = () => {
-    console.log('save');
+  const handleSave = (dados: IFormData) => {
+    setIsLoading(true);
+    if (id === 'new') {
+      ClientesService
+        .create(dados)
+        .then((result) => {
+          setIsLoading(false);
+          if (result instanceof Error) {
+            alert(result.message);
+          } else {
+            navigate(`/clients/detail/${result}`);
+          }
+        });
+    } else {
+      ClientesService
+        .updateById(Number(id), { id: Number(id), ...dados })
+        .then((result) => {
+          setIsLoading(false);
+          if (result instanceof Error) {
+            alert(result.message);
+          }
+        });
+
+    }
   };
 
   const handleDelete = (id: number) => {
@@ -63,8 +101,8 @@ export const DetailClients: React.FC = () => {
 
           onCliqueNovo={() => navigate('/clients/detail/new')}
           onCliqueVoltar={() => navigate('/clients')}
-          onCliqueSalvar={handleSave}
-          onCliqueSalvarEFechar={handleSave}
+          onCliqueSalvar={() => formRef.current?.submitForm()}
+          onCliqueSalvarEFechar={() => formRef.current?.submitForm()}
           onCliqueApagar={() => handleDelete(Number(id))}
 
         />
@@ -74,7 +112,17 @@ export const DetailClients: React.FC = () => {
         <LinearProgress variant='indeterminate' />
       )}
 
-      <h1>Detalhes do Cliente {id}</h1>
+      <Form ref={formRef} onSubmit={handleSave}>
+        <VTextField placeholder='Nome' name='nome' />
+        <VTextField placeholder='Principal email' name='email' />
+        <VTextField placeholder='Veículo Marca-Modelo' name='veiculo' />
+        <VTextField placeholder='Placa' name='placa' />
+        <VTextField placeholder='Data-Hora Checkin' name='checkin' />
+        <VTextField placeholder='Data-Hora Checkout' name='checkout' />
+        <VTextField placeholder='Valor Pago' name='payments' />
+
+
+      </Form>
 
     </LayoutBasePage>
 
