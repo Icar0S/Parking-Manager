@@ -32,10 +32,10 @@ export const VTextField: React.FC<TVTextFieldProps> = ({ name, ...rest }) => {
       error={!!error} // '!' -> tranforma de string para boolean. '!!' -> apos tranformar para boolean transforma em negativo.
       helperText={error}
       defaultValue={defaultValue}
-      onKeyDown={() => error ? clearError() : undefined}
 
       value={value}
-      onChange={e => setValue(e.target.value)}
+      onChange={e => { setValue(e.target.value); rest.onChange?.(e); }}
+      onKeyDown={(e) => { error && clearError(); rest.onKeyDown?.(e); }}
 
     />
 

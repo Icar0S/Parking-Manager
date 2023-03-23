@@ -1,4 +1,4 @@
-import { LinearProgress } from '@mui/material';
+import { LinearProgress, Box, Paper, Grid, Typography } from '@mui/material';
 import { useEffect, useState, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 //utilizando unform-rocketseat.app
@@ -108,19 +108,105 @@ export const DetailClients: React.FC = () => {
         />
       }
     >
-      {isLoading && (
-        <LinearProgress variant='indeterminate' />
-      )}
+
+
+
 
       <Form ref={formRef} onSubmit={handleSave}>
-        <VTextField placeholder='Nome' name='nome' />
-        <VTextField placeholder='Principal email' name='email' />
-        <VTextField placeholder='Veículo Marca-Modelo' name='veiculo' />
-        <VTextField placeholder='Placa' name='placa' />
-        <VTextField placeholder='Data-Hora Checkin' name='checkin' />
-        <VTextField placeholder='Data-Hora Checkout' name='checkout' />
-        <VTextField placeholder='Valor Pago' name='payments' />
+        <Box margin={1} display='flex' flexDirection='column' component={Paper} variant='outlined'>
 
+          <Grid container direction='column' padding={2} spacing={2}>
+
+            {isLoading && (
+              <Grid item>
+                <LinearProgress variant='indeterminate' />
+              </Grid>
+            )}
+
+            <Grid item>
+              <Typography variant='h6'>Geral</Typography>
+            </Grid>
+
+            <Grid container item direction='row'>
+              <Grid item xs={12} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  label='Nome'
+                  disabled={isLoading}
+                  name='nome'
+                  onChange={(e) => setName(e.target.value)}
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container item direction='row'>
+              <Grid item xs={8} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  label='Principal email'
+                  disabled={isLoading}
+                  name='email'
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container item direction='row'>
+              <Grid item xs={8} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  label='Veículo Marca-Modelo'
+                  disabled={isLoading}
+                  name='veiculo'
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container item direction='row'>
+              <Grid item xs={8} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  label='Placa'
+                  disabled={isLoading}
+                  name='placa'
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container item direction='row'>
+              <Grid item xs={8} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  label='Data-Hora Checkin'
+                  disabled={isLoading}
+                  name='checkin'
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container item direction='row'>
+              <Grid item xs={8} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  label='Data-Hora Checkout'
+                  disabled={isLoading}
+                  name='checkout'
+                />
+              </Grid>
+            </Grid>
+
+            <Grid container item direction='row'>
+              <Grid item xs={8} md={6} lg={4} xl={2}>
+                <VTextField
+                  fullWidth
+                  label='Valor Pago'
+                  disabled={isLoading}
+                  name='payments'
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+
+        </Box>
 
       </Form>
 
