@@ -1,14 +1,14 @@
 import { LinearProgress, Box, Paper, Grid, Typography } from '@mui/material';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 //utilizando unform-rocketseat.app
-import { Form } from '@unform/web';
-import { FormHandles } from '@unform/core';
+//import { Form } from '@unform/web';
+//import { FormHandles } from '@unform/core';
 
 import { FerramentasDeDetalhe } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 import { ClientesService } from '../../shared/services/api/clientes/ClientesService';
-import { VTextField } from '../../shared/forms';
+import { VTextField, VForm, useVForm } from '../../shared/forms';
 
 
 interface IFormData {
@@ -26,7 +26,7 @@ export const DetailClients: React.FC = () => {
   const { id = 'new' } = useParams<'id'>(); //useParams recebe tipos de parametro, caso tivesse mais parametros <id | outro>
   const navigate = useNavigate();
 
-  const formRef = useRef<FormHandles>(null);
+  const { formRef, save, saveAndClose, isSaveAndClose } = useVForm();
 
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
@@ -38,6 +38,7 @@ export const DetailClients: React.FC = () => {
       ClientesService.getById(Number(id))
         .then((result) => {
           setIsLoading(false);
+
           if (result instanceof Error) {
             alert(result.message);
             navigate('/clients');
@@ -46,6 +47,13 @@ export const DetailClients: React.FC = () => {
             formRef.current?.setData(result);
           }
         });
+    } else {
+      formRef.current?.setData({
+        nome: '', email: '',
+        veiculo: '', placa: '',
+        checkin: '', checkout: '',
+        payments: '',
+      });
     }
   }, [id]);
 
@@ -56,10 +64,15 @@ export const DetailClients: React.FC = () => {
         .create(dados)
         .then((result) => {
           setIsLoading(false);
+
           if (result instanceof Error) {
             alert(result.message);
           } else {
-            navigate(`/clients/detail/${result}`);
+            if (isSaveAndClose()) {
+              navigate('/clients');
+            } else {
+              navigate(`/clients/detail/${result}`);
+            }
           }
         });
     } else {
@@ -67,8 +80,13 @@ export const DetailClients: React.FC = () => {
         .updateById(Number(id), { id: Number(id), ...dados })
         .then((result) => {
           setIsLoading(false);
+
           if (result instanceof Error) {
             alert(result.message);
+          } else {
+            if (isSaveAndClose()) {
+              navigate('/clients');
+            }
           }
         });
 
@@ -101,8 +119,8 @@ export const DetailClients: React.FC = () => {
 
           onCliqueNovo={() => navigate('/clients/detail/new')}
           onCliqueVoltar={() => navigate('/clients')}
-          onCliqueSalvar={() => formRef.current?.submitForm()}
-          onCliqueSalvarEFechar={() => formRef.current?.submitForm()}
+          onCliqueSalvar={save}
+          onCliqueSalvarEFechar={saveAndClose}
           onCliqueApagar={() => handleDelete(Number(id))}
 
         />
@@ -112,7 +130,7 @@ export const DetailClients: React.FC = () => {
 
 
 
-      <Form ref={formRef} onSubmit={handleSave}>
+      <VForm ref={formRef} onSubmit={handleSave}>
         <Box margin={1} display='flex' flexDirection='column' component={Paper} variant='outlined'>
 
           <Grid container direction='column' padding={2} spacing={2}>
@@ -208,7 +226,7 @@ export const DetailClients: React.FC = () => {
 
         </Box>
 
-      </Form>
+      </VForm>
 
     </LayoutBasePage>
 
