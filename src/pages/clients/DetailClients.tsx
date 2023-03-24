@@ -1,14 +1,14 @@
 import { LinearProgress, Box, Paper, Grid, Typography } from '@mui/material';
 import { useEffect, useState, } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import * as yup from 'yup';
 //utilizando unform-rocketseat.app
-//import { Form } from '@unform/web';
-//import { FormHandles } from '@unform/core';
+//import { Form } from '@unform/web';//import { FormHandles } from '@unform/core';
 
 import { FerramentasDeDetalhe } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 import { ClientesService } from '../../shared/services/api/clientes/ClientesService';
-import { VTextField, VForm, useVForm } from '../../shared/forms';
+import { VTextField, VForm, useVForm, IVFormErrors } from '../../shared/forms';
 
 
 interface IFormData {
@@ -16,18 +16,26 @@ interface IFormData {
   email: string;
   veiculo: string;
   placa: string;
-  checkin: string;
-  checkout: string;
+  checkin: Date;
+  checkout: Date;
   payments: number;
 }
 
-export const DetailClients: React.FC = () => {
+const formValidationSchema: yup.Schema<IFormData> = yup.object().shape({
+  nome: yup.string().required().min(3),
+  email: yup.string().required().email(),
+  veiculo: yup.string().required().min(3),
+  placa: yup.string().required().matches(/^[A-Za-z]{3}[0-9]{1}[A-Za-z]{1}[0-9]{2}$/).test('len', 'A placa deve ter 7 caracteres', val => val.length === 7),
+  checkin: yup.date().required(),
+  checkout: yup.date().required().min(yup.ref('checkin'), 'A data de checkout deve ser posterior à data de checkin'),
+  payments: yup.number().required()
+});
 
+export const DetailClients: React.FC = () => {
   const { id = 'new' } = useParams<'id'>(); //useParams recebe tipos de parametro, caso tivesse mais parametros <id | outro>
   const navigate = useNavigate();
 
   const { formRef, save, saveAndClose, isSaveAndClose } = useVForm();
-
   const [isLoading, setIsLoading] = useState(false);
   const [name, setName] = useState('');
 
@@ -58,39 +66,57 @@ export const DetailClients: React.FC = () => {
   }, [id]);
 
   const handleSave = (dados: IFormData) => {
-    setIsLoading(true);
-    if (id === 'new') {
-      ClientesService
-        .create(dados)
-        .then((result) => {
-          setIsLoading(false);
 
-          if (result instanceof Error) {
-            alert(result.message);
-          } else {
-            if (isSaveAndClose()) {
-              navigate('/clients');
-            } else {
-              navigate(`/clients/detail/${result}`);
-            }
-          }
+    formValidationSchema.
+      validate(dados, { abortEarly: false })
+      .then((dadosValidados) => {
+        setIsLoading(true);
+
+        setIsLoading(true);
+
+        if (id === 'new') {
+          ClientesService
+            .create(dadosValidados)
+            .then((result) => {
+              setIsLoading(false);
+
+              if (result instanceof Error) {
+                alert(result.message);
+              } else {
+                if (isSaveAndClose()) {
+                  navigate('/clients');
+                } else {
+                  navigate(`/clients/detail/${result}`);
+                }
+              }
+            });
+        } else {
+          ClientesService
+            .updateById(Number(id), { id: Number(id), ...dadosValidados })
+            .then((result) => {
+              setIsLoading(false);
+
+              if (result instanceof Error) {
+                alert(result.message);
+              } else {
+                if (isSaveAndClose()) {
+                  navigate('/clients');
+                }
+              }
+            });
+        }
+      })
+      .catch((errors: yup.ValidationError) => {
+        const validationErrors: IVFormErrors = {};
+
+        errors.inner.forEach(error => {
+          if (!error.path) return;
+
+          validationErrors[error.path] = error.message;
         });
-    } else {
-      ClientesService
-        .updateById(Number(id), { id: Number(id), ...dados })
-        .then((result) => {
-          setIsLoading(false);
 
-          if (result instanceof Error) {
-            alert(result.message);
-          } else {
-            if (isSaveAndClose()) {
-              navigate('/clients');
-            }
-          }
-        });
-
-    }
+        formRef.current?.setErrors(validationErrors);
+      });
   };
 
   const handleDelete = (id: number) => {
@@ -126,9 +152,6 @@ export const DetailClients: React.FC = () => {
         />
       }
     >
-
-
-
 
       <VForm ref={formRef} onSubmit={handleSave}>
         <Box margin={1} display='flex' flexDirection='column' component={Paper} variant='outlined'>

@@ -8,8 +8,8 @@ export interface IListagemCliente {
   nome: string;
   veiculo: string,
   placa: string,
-  checkin: string, //Date
-  checkout: string,
+  checkin: Date, //Date
+  checkout: Date,
   payments: number
   // payments: [
   //   {
@@ -26,8 +26,8 @@ interface IDetalheCliente {
   nome: string;
   veiculo: string,
   placa: string,
-  checkin: string, //Date
-  checkout: string,
+  checkin: Date, //Date
+  checkout: Date,
   payments: number
 }
 

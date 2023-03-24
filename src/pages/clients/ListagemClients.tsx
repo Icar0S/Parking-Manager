@@ -118,8 +118,8 @@ export const ListagemClients: React.FC = () => {
                 <TableCell>{row.email}</TableCell>
                 <TableCell>{row.veiculo}</TableCell>
                 <TableCell>{row.placa}</TableCell>
-                <TableCell>{row.checkin}</TableCell>
-                <TableCell>{row.checkout}</TableCell>
+                <TableCell>{row.checkin.toLocaleString()}</TableCell>
+                <TableCell>{row.checkout.toLocaleString()}</TableCell>
                 <TableCell>{row.payments}</TableCell>
               </TableRow>
             ))}
