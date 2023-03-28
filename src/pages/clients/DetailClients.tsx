@@ -107,6 +107,7 @@ export const DetailClients: React.FC = () => {
         }
       })
       .catch((errors: yup.ValidationError) => {
+        //validationErro é um objeto que recebe varios atributos
         const validationErrors: IVFormErrors = {};
 
         errors.inner.forEach(error => {
