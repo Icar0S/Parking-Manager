@@ -125,7 +125,7 @@ export const DetailParking: React.FC = () => {
 
   return (
     <LayoutBasePage
-      titulo={id === 'new' ? 'Nova Cidade' : name}
+      titulo={id === 'new' ? 'Novo Estacionamento' : name}
       barraFerramentas={
         <FerramentasDeDetalhe
           textoBotaoNovo="Nova"
@@ -175,7 +175,7 @@ export const DetailParking: React.FC = () => {
               <Grid item xs={8} md={6} lg={4} xl={2}>
                 <VTextField
                   fullWidth
-                  label='Valor Pago'
+                  label='Faturamento'
                   disabled={isLoading}
                   name='payments'
                 />

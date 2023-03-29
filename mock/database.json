@@ -227,9 +227,20 @@
     {
       "nome": "Balneário Camboriú",
       "id": 4
+    },
+    {
+      "nome": "Fortaleza",
+      "id": 5
     }
   ],
   "history": [],
-  "parking": [],
+  "parking": [
+    {
+      "cidadeId": 5,
+      "payments": 100,
+      "nome": "Est. Iguatemi",
+      "id": 1
+    }
+  ],
   "payments": []
 }
