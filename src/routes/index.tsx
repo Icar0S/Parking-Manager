@@ -6,9 +6,12 @@ import {
   ListagemParking,
   ListagemCities,
   ListagemHistory,
-  ListagePayments,
+  ListagemPayments,
   ListagemClients,
-  DetailClients
+  DetailClients,
+  DetailCities,
+  DetailHistory,
+  DetailPayments
 } from '../pages';
 import { useAppThemeContext, useAppDrawerContext } from '../shared/contexts';
 
@@ -56,14 +59,19 @@ export const AppRoutes = () => {
       <Route path="/home" element={<Dash />} />
 
       <Route path="/parking" element={<ListagemParking />} />
-      {/* <Route path="/parking/detalhes/:id" element={<Dash />} /> */}
+      {/* <Route path="/parking/detail/:id" element={<Dash />} /> */}
 
       <Route path="/clients" element={<ListagemClients />} />
       <Route path="/clients/detail/:id" element={<DetailClients />} />
 
       <Route path="/cities" element={<ListagemCities />} />
+      <Route path="/cities/detail/:id" element={<DetailCities />} />
+
       <Route path="/history" element={<ListagemHistory />} />
-      <Route path="/payments" element={<ListagePayments />} />
+      <Route path="/history/detail/:id" element={<DetailHistory />} />
+
+      <Route path="/payments" element={<ListagemPayments />} />
+      <Route path="/payments/detail/:id" element={<DetailPayments />} />
 
       <Route path="*" element={<Navigate to="/home" />} />
     </Routes>

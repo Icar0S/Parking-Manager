@@ -210,5 +210,9 @@
       "email": "romulo@etice.com",
       "nome": "Rômulo"
     }
-  ]
+  ],
+  "cities": [],
+  "history": [],
+  "parking": [],
+  "payments": []
 }
