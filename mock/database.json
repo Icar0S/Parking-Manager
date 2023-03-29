@@ -211,7 +211,24 @@
       "nome": "Rômulo"
     }
   ],
-  "cities": [],
+  "cities": [
+    {
+      "nome": "São Paulo",
+      "id": 1
+    },
+    {
+      "nome": "Rio de Janeiro",
+      "id": 2
+    },
+    {
+      "nome": "Porto Alegre",
+      "id": 3
+    },
+    {
+      "nome": "Balneário Camboriú",
+      "id": 4
+    }
+  ],
   "history": [],
   "parking": [],
   "payments": []

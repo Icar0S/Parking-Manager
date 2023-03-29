@@ -107,14 +107,14 @@ export const ListagemCities: React.FC = () => {
           <TableFooter>
             {isLoading && (
               <TableRow>
-                <TableCell colSpan={3}>
+                <TableCell colSpan={2}>
                   <LinearProgress variant='indeterminate' />
                 </TableCell>
               </TableRow>
             )}
             {(totalCount > 0 && totalCount > Enviroment.LIMITE_DE_LINHAS) && (
               <TableRow>
-                <TableCell colSpan={3}>
+                <TableCell colSpan={2}>
                   <Pagination
                     page={pagina}
                     count={Math.ceil(totalCount / Enviroment.LIMITE_DE_LINHAS)}
