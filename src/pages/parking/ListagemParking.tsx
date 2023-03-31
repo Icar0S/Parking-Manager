@@ -82,6 +82,8 @@ export const ListagemParking: React.FC = () => {
             <TableRow>
               <TableCell width={100}>Ações</TableCell>
               <TableCell>Nome</TableCell>
+              <TableCell>Faturamento Mensal</TableCell>
+              <TableCell>Cidade</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -96,6 +98,8 @@ export const ListagemParking: React.FC = () => {
                   </IconButton>
                 </TableCell>
                 <TableCell>{row.nome}</TableCell>
+                <TableCell>{row.payments}</TableCell>
+                <TableCell>{row.cidadeId}</TableCell>
               </TableRow>
             ))}
           </TableBody>
@@ -107,14 +111,14 @@ export const ListagemParking: React.FC = () => {
           <TableFooter>
             {isLoading && (
               <TableRow>
-                <TableCell colSpan={3}>
+                <TableCell colSpan={4}>
                   <LinearProgress variant='indeterminate' />
                 </TableCell>
               </TableRow>
             )}
             {(totalCount > 0 && totalCount > Enviroment.LIMITE_DE_LINHAS) && (
               <TableRow>
-                <TableCell colSpan={3}>
+                <TableCell colSpan={4}>
                   <Pagination
                     page={pagina}
                     count={Math.ceil(totalCount / Enviroment.LIMITE_DE_LINHAS)}

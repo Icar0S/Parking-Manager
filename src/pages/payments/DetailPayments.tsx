@@ -7,6 +7,7 @@ import { FerramentasDeDetalhe } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 import { PaymentsService } from '../../shared/services/api/payments/PaymentsService';
 import { VTextField, VForm, useVForm, IVFormErrors } from '../../shared/forms';
+import { AutoCompleteCars } from './components/AutoCompleteCars';
 
 
 interface IFormData {
@@ -187,12 +188,7 @@ export const DetailPayments: React.FC = () => {
 
             <Grid container item direction='row'>
               <Grid item xs={8} md={6} lg={4} xl={2}>
-                <VTextField
-                  fullWidth
-                  label='Veículo Marca-Modelo'
-                  disabled={isLoading}
-                  name='veiculo'
-                />
+                <AutoCompleteCars />
               </Grid>
             </Grid>
 

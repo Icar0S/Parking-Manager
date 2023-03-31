@@ -2,13 +2,13 @@
   "clients": [
     {
       "id": 1,
-      "nome": "Luiz Gabriel",
-      "email": "luizgabriel@gmail.com",
-      "veiculo": "Chery Tiggo 8",
+      "payments": 100.44,
+      "checkout": "2023-03-15T21:30:00.000Z",
+      "checkin": "2023-03-13T08:30:00.000Z",
       "placa": "IAM7Q59",
-      "checkin": "2023-03-13 05:30",
-      "checkout": "2023-03-15 18:30",
-      "payments": "100.44"
+      "veiculo": "Chery Tiggo 5",
+      "email": "luizgabriel@gmail.com",
+      "nome": "Luiz Gabriel"
     },
     {
       "id": 2,
@@ -236,11 +236,26 @@
   "history": [],
   "parking": [
     {
+      "id": 1,
       "cidadeId": 5,
-      "payments": 100,
-      "nome": "Est. Iguatemi",
-      "id": 1
+      "payments": 20000,
+      "nome": "Est. Iguatemi"
+    },
+    {
+      "id": 2,
+      "nome": "Est. Mr. Robot",
+      "payments": 10000,
+      "cidadeId": 5
     }
   ],
-  "payments": []
+  "payments": [
+    {
+      "id": 1,
+      "nome": "Luiz Gabriel",
+      "email": "gabriel@gmail",
+      "veiculo": "CHERY Tiggo 5",
+      "placa": "IAM7Q59",
+      "payments": 100
+    }
+  ]
 }

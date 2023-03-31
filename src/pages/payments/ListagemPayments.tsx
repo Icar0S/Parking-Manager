@@ -82,6 +82,7 @@ export const ListagemPayments: React.FC = () => {
             <TableRow>
               <TableCell width={100}>Ações</TableCell>
               <TableCell>Nome</TableCell>
+              <TableCell>Pagamento</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -96,6 +97,7 @@ export const ListagemPayments: React.FC = () => {
                   </IconButton>
                 </TableCell>
                 <TableCell>{row.nome}</TableCell>
+                <TableCell>{row.payments}</TableCell>
               </TableRow>
             ))}
           </TableBody>
