@@ -7,6 +7,7 @@ import { FerramentasDeDetalhe } from '../../shared/components';
 import { LayoutBasePage } from '../../shared/layouts';
 import { ParkingsService } from '../../shared/services/api/parkings/ParkingsService';
 import { VTextField, VForm, useVForm, IVFormErrors } from '../../shared/forms';
+import { AutoCompleteCities } from './components/AutoCompleteCities';
 
 
 interface IFormData {
@@ -184,12 +185,7 @@ export const DetailParking: React.FC = () => {
 
             <Grid container item direction='row'>
               <Grid item xs={8} md={6} lg={4} xl={2}>
-                <VTextField
-                  fullWidth
-                  label='Cidade id'
-                  disabled={isLoading}
-                  name='cidadeId'
-                />
+                <AutoCompleteCities />
               </Grid>
             </Grid>
 
