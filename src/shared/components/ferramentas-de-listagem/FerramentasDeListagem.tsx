@@ -1,5 +1,7 @@
 import { Box, Button, TextField, Paper, useTheme, Icon } from '@mui/material';
 
+//import Parking from '../menu-lateral/images/logo-parking-spot.png';
+
 interface IFerramentasDeListagemProps {
   textoDaBusca?: string;
   mostrarInputBusca?: boolean;

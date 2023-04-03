@@ -237,15 +237,27 @@
   "parking": [
     {
       "id": 1,
-      "cidadeId": 5,
+      "nome": "Est. Shopping Iguatemi",
       "payments": 20000,
-      "nome": "Est. Iguatemi"
+      "cidadeId": 5
     },
     {
       "id": 2,
-      "nome": "Est. Mr. Robot",
+      "nome": "Est. Shopping Benfica",
       "payments": 10000,
       "cidadeId": 5
+    },
+    {
+      "cidadeId": 5,
+      "payments": 150000,
+      "nome": "Est. Shopping Rio Mar",
+      "id": 3
+    },
+    {
+      "cidadeId": 1,
+      "payments": 1000000,
+      "nome": "Est. Shopping JK Iguatemi",
+      "id": 4
     }
   ],
   "payments": [

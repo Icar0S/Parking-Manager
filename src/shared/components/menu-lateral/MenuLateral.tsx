@@ -3,6 +3,9 @@ import { Box } from '@mui/system';
 import { useMatch, useNavigate, useResolvedPath } from 'react-router-dom';
 import { useAppDrawerContext, useAppThemeContext } from '../../contexts';
 
+import logo from './images/logo-managerParking.png';
+
+
 interface AppThemeProviderProps {
   children: React.ReactNode;
 }
@@ -50,10 +53,9 @@ export const MenuLateral: React.FC<AppThemeProviderProps> = ({ children }) => {
 
           <Box width="100%" height={theme.spacing(20)} display="flex" alignItems="center" justifyContent="center" >
             <Avatar
-              sx={{ height: theme.spacing(12), width: theme.spacing(12) }}
-              src="https://avatars.githubusercontent.com/u/39846852?s=96&v=4"
+              sx={{ height: theme.spacing(15), width: theme.spacing(15) }}
+              src={logo} //"https://avatars.githubusercontent.com/u/39846852?s=96&v=4"
             />
-
           </Box>
 
           <Divider />
