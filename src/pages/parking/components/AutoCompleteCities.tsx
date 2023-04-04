@@ -41,7 +41,7 @@ export const AutoCompleteCities: React.FC<IAutoCompleteCitiesProps> = ({ isExter
           setIsLoading(false);
 
           if (result instanceof Error) {
-            // alert(result.message);
+            alert(result.message);
           } else {
             console.log(result);
 

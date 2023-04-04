@@ -53,7 +53,7 @@ export const DetailPayments: React.FC = () => {
     } else {
       formRef.current?.setData({
         nome: '', email: '',
-        veiculo: '', placa: '',
+        veiculo: undefined, placa: '',
         payments: '',
       });
     }

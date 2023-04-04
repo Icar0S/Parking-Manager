@@ -50,7 +50,7 @@ export const DetailParking: React.FC = () => {
       formRef.current?.setData({
         nome: '',
         payments: '',
-        cidadeId: '',
+        cidadeId: undefined,
       });
     }
   }, [id]);

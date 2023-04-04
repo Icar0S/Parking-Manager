@@ -41,11 +41,11 @@ export const AutoCompleteCars: React.FC<IAutoCompleteCarsProps> = ({ isExternalL
           setIsLoading(false);
 
           if (result instanceof Error) {
-            // alert(result.message);
+            alert(result.message);
           } else {
             console.log(result);
 
-            setOpcoes(result.data.map(veiculo => ({ id: veiculo.id, label: veiculo.veiculo })));
+            setOpcoes(result.data.map(car => ({ id: car.id, label: car.veiculo })));
           }
         });
     });

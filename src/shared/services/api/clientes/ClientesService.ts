@@ -11,14 +11,6 @@ export interface IListagemCliente {
   checkin: Date, //Date
   checkout: Date,
   payments: number
-  // payments: [
-  //   {
-  //     paymentsId: number,
-  //     amount: number,
-  //     description: string,
-  //     data: Date
-  //   }
-  // ]
 }
 interface IDetalheCliente {
   id: number;

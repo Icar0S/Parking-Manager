@@ -5,11 +5,17 @@ import { Api } from '../axios-config';
 export interface IListagemPayment {
   id: number;
   nome: string;
+  email: string;
+  veiculo: string;
+  placa: string;
   payments: number;
 }
 interface IDetalhePayment {
   id: number;
   nome: string;
+  email: string;
+  veiculo: string;
+  placa: string;
   payments: number;
 }
 
